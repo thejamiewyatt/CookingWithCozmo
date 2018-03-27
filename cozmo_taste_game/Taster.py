@@ -1,4 +1,4 @@
-import cozmo
+from cozmo.anim import Triggers
 from random import shuffle
 
 
@@ -10,6 +10,13 @@ class Taster:
         """
         self.robot = robot
         self.tastes = ["sweet", "salty", "sour", "savory", "bitter"]
+        self.reactions = [  # Ranked negative to positive
+            Triggers.MajorFail,
+            Triggers.CubeMovedUpset,
+            Triggers.CodeLabBored,
+            Triggers.MajorWin,
+            Triggers.CodeLabHappy
+        ]
 
     def get_new_preferences(self):
         """
@@ -27,26 +34,13 @@ class Taster:
         :return: None
         """
         rank = self.rank_food(food)
-
-        if rank == 0:
-            self.robot.play_anim_trigger(cozmo.anim.Triggers.MajorFail).wait_for_completed()
-
-        elif rank == 1:
-            self.robot.play_anim_trigger(cozmo.anim.Triggers.CubeMovedUpset).wait_for_completed()
-
-        elif rank == 2:
-            self.robot.play_anim_trigger(cozmo.anim.Triggers.NothingToDoBoredIntro).wait_for_completed()
-            self.robot.play_anim_trigger(cozmo.anim.Triggers.NeutralFace).wait_for_completed()
-
-        elif rank == 3:
-            self.robot.play_anim_trigger(cozmo.anim.Triggers.MajorWin).wait_for_completed()
-
-        else:
-            self.robot.play_anim_trigger(cozmo.anim.Triggers.CodeLabHappy).wait_for_completed()
+        animation_trigger = self.reactions[rank]
+        self.robot.play_anim_trigger(animation_trigger).wait_for_completed()
 
     def rank_food(self, food):
         """
         Rank is implicit in the ordering of the self.tastes list.
+        A rank of 0 means that Cozmo really dislikes the food and 5 means that Cozmo really likes the food.
         If the food tastes like multiple things then we just use the first taste.
         :param food: A Food Prop instance
         :return: A ranking of how much the taster likes the food

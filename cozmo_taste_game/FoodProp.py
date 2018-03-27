@@ -58,15 +58,15 @@ class Orange(FoodProp):
         return self.to_string()
 
 
-def getFood(foodType: str):
+def get_food(food_type: str):
     """
     Factory function
-    :param foodType: String representing what food to return
+    :param food_type: String representing what food to return
     :return: Reference to the suitable static food object
-    Exceptions: KeyError if foodType isn't in dictionary
+    Exceptions: KeyError if food_type isn't in dictionary
     """
-    foodType = foodType.lower()
+    food_type = food_type.lower()
     return {
         "apple": Apple(),
         "orange": Orange()
-    }[foodType]
+    }[food_type]
