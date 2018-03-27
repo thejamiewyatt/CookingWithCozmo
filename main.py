@@ -1,6 +1,14 @@
 import cozmo
 import random
 from FoodProp import *
+from PIL import Image
+
+face_image = Image.open("./openEye.png")
+# resize to fit on Cozmo's face screen
+face_image = face_image.resize(cozmo.oled_face.dimensions(), Image.BICUBIC)
+# convert the image to the format used by the oled screen
+face_image = cozmo.oled_face.convert_image_to_screen_data(face_image,
+                                                              invert_image=True)
 
 
 def on_new_camera_image(evt, **kwargs):
@@ -24,7 +32,32 @@ def on_new_camera_image(evt, **kwargs):
                 isProcessing = False
 
 
+def react(rank, r):
+    """
+
+    :param rank: The rank given to the food to choose reaction
+    :param r: The robot to run commands on
+    :return: None
+    """
+    print(rank)
+    if rank == 0:
+        r.play_anim_trigger(cozmo.anim.Triggers.MajorFail).wait_for_completed()
+    elif rank == 1:
+        r.play_anim_trigger(cozmo.anim.Triggers.CubeMovedUpset).wait_for_completed()
+    elif rank == 2:
+        r.play_anim_trigger(cozmo.anim.Triggers.NothingToDoBoredIntro).wait_for_completed()
+        r.play_anim_trigger(cozmo.anim.Triggers.NeutralFace).wait_for_completed()
+    elif rank == 3:
+        r.play_anim_trigger(cozmo.anim.Triggers.MajorWin).wait_for_completed()
+    else:
+        r.play_anim_trigger(cozmo.anim.Triggers.CodeLabHappy).wait_for_completed()
+
+
 def det_fav_taste():
+    """
+    This function creates a list of flavors and shuffles them
+    :return: shuffled list of flavors
+    """
     flavors = ["sweet", "salty", "sour", "savory", "bitter"]
     random.shuffle(flavors)
     return flavors
@@ -39,12 +72,9 @@ def rank_food(food, taste):
 
 def cozmo_program(robot: cozmo.robot.Robot):
     flavors = det_fav_taste()
-    for i in range(5):
-        print(flavors[i])
     apple = Apple()
     rank = rank_food(apple, flavors)
-    robot.say_text(flavors[rank]).wait_for_completed()
-
+    react(rank, robot)
     ##
 
 
