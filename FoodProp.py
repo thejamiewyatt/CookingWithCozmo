@@ -22,7 +22,7 @@ class FoodProp:
     # Output: return a tuple with strings of the suitable taste types
     # Possible strings: ("sweet", "sour", "salty", "bitter", "umami")
     @abstractmethod
-    def getTasteTypes(self):
+    def tastes(self):
         pass
 
 
@@ -35,7 +35,7 @@ class Apple(FoodProp):
         return "apple"
 
     @classmethod
-    def getTasteTypes(cls):
+    def tastes(cls):
         return (sweet)
 
     def __str__(self):
@@ -51,18 +51,20 @@ class Orange(FoodProp):
         return "orange"
 
     @classmethod
-    def getTasteTypes(cls):
+    def tastes(cls):
         return (sweet, sour)
 
     def __str__(self):
         return self.to_string()
 
 
-# Factory function
-# Input: string representing what food to return
-# Output: reference to the suitable static food object
-# Exceptions: KeyError if foodType isn't in dictionary
 def getFood(foodType: str):
+    """
+    Factory function
+    :param foodType: String representing what food to return
+    :return: Reference to the suitable static food object
+    Exceptions: KeyError if foodType isn't in dictionary
+    """
     foodType = foodType.lower()
     return {
         "apple": Apple(),
