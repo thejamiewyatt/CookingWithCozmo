@@ -26,7 +26,7 @@ Get the latest changes (again)
 ```
 git pull -r
 ```
-Merge your local branch
+Merge your local branch with local master branch
 ```
 git merge my-new-feature
 ```
