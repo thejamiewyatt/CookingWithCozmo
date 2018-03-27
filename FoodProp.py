@@ -9,6 +9,7 @@ umami = "umami"
 savory = "umami"
 sweet = "sweet"
 
+
 class FoodProp:
     def __init__(self):
         pass
@@ -17,20 +18,22 @@ class FoodProp:
     @abstractmethod
     def to_string(cls):
         pass
+
     # Output: return a tuple with strings of the suitable taste types
     # Possible strings: ("sweet", "sour", "salty", "bitter", "umami")
     @abstractmethod
     def getTasteTypes(self):
         pass
 
+
 class Apple(FoodProp):
     def __init__(self):
         pass
-    
+
     @classmethod
     def to_string(cls):
         return "apple"
-    
+
     @classmethod
     def getTasteTypes(cls):
         return (sweet)
@@ -38,10 +41,11 @@ class Apple(FoodProp):
     def __str__(self):
         return self.to_string()
 
+
 class Orange(FoodProp):
     def __init__(self):
         pass
-    
+
     @classmethod
     def to_string(cls):
         return "orange"
@@ -53,6 +57,7 @@ class Orange(FoodProp):
     def __str__(self):
         return self.to_string()
 
+
 # Factory function
 # Input: string representing what food to return
 # Output: reference to the suitable static food object
@@ -62,6 +67,4 @@ def getFood(foodType: str):
     return {
         "apple": Apple(),
         "orange": Orange()
-        }[foodType]
-
-
+    }[foodType]
