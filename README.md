@@ -2,6 +2,12 @@
 
 Cozmo taste project for St. Louis Science Center.
 
+To run this program:
+
+```
+python3.6 main.py
+```
+
 #### Sample workflow for working with git from the command line
 Get the latest changes
 ```
@@ -27,11 +33,4 @@ git merge my-new-feature
 Push to remote master branch
 ```
 git push origin master
-```
-
-
-To run this program:
-
-```
-python3.6 main.py
 ```
