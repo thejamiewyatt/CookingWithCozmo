@@ -1,3 +1,9 @@
-# CozmoTasteProject
+# Cozmo Taste Project
 
-Make cozmo taste things
+Cozmo taste project for St. Louis Science Center.
+
+To run this program:
+
+```
+python3.6 main.py
+```
