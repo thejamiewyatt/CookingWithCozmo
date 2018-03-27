@@ -34,3 +34,7 @@ Push changes to remote master branch
 ```
 git push origin master
 ```
+Delete your local branch
+```
+git branch -D my-new-feature
+```
