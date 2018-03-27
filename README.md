@@ -30,7 +30,7 @@ Merge your local branch with local master branch
 ```
 git merge my-new-feature
 ```
-Push to remote master branch
+Push changes to remote master branch
 ```
 git push origin master
 ```
