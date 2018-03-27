@@ -1,4 +1,6 @@
 import cozmo
+import random
+from FoodProp import *
 
 
 def on_new_camera_image(evt, **kwargs):
@@ -22,8 +24,27 @@ def on_new_camera_image(evt, **kwargs):
                 isProcessing = False
 
 
+def det_fav_taste():
+    flavors = ["sweet", "salty", "sour", "savory", "bitter"]
+    random.shuffle(flavors)
+    return flavors
+
+
+def rank_food(food, taste):
+    for i, taste in enumerate(taste):
+        if taste in food.getTasteTypes():
+            rank = i
+    return rank
+
+
 def cozmo_program(robot: cozmo.robot.Robot):
-    robot.say_text("I am hungry").wait_for_completed()
+    flavors = det_fav_taste()
+    for i in range(5):
+        print(flavors[i])
+    apple = Apple()
+    rank = rank_food(apple, flavors)
+    robot.say_text(flavors[rank]).wait_for_completed()
+
     ##
 
 
