@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sphinx-apidoc -f ../cozmo_taste_game -o cozmo_taste_game
+
+make clean && make html
