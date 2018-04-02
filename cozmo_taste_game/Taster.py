@@ -6,6 +6,7 @@ class Taster:
     def __init__(self, robot):
         """
         Initializes a Taster
+
         :param robot: A Cozmo instance
         """
         self.robot = robot
@@ -22,6 +23,7 @@ class Taster:
         """
         Shuffles self.tastes so that the Taster has different taste preferences.
         self.tastes are ordered from LEAST favorite (index 0) to MOST favorite.
+
         :return: None
         """
         shuffle(self.tastes)
@@ -29,6 +31,7 @@ class Taster:
     def taste_food(self, food):
         """
         The robot tastes the food and reacts to it.
+
         :param robot: A Cozmo instance
         :param food: A Food Prop instance
         :return: None
@@ -43,6 +46,7 @@ class Taster:
         Rank is implicit in the ordering of the self.tastes list.
         A rank of 0 means that Cozmo really dislikes the food and 5 means that Cozmo really likes the food.
         If the food tastes like multiple things then we just use the first taste.
+
         :param food: A Food Prop instance
         :return: A ranking of how much the taster likes the food
         """

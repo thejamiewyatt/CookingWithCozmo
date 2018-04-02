@@ -54,9 +54,10 @@ class Orange(FoodProp):
 def get_food(food_type: str):
     """
     Factory function
+
     :param food_type: String representing what food to return
     :return: Reference to the suitable static food object
-    Exceptions: KeyError if food_type isn't in dictionary
+    :exception: KeyError if food_type isn't in dictionary
     """
     food_type = food_type.lower()
     return {
