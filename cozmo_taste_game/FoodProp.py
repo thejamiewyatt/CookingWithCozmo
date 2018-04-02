@@ -14,48 +14,41 @@ class FoodProp:
     def __init__(self):
         pass
 
-    # Output: return the name of the food as a string
     @abstractmethod
-    def to_string(cls):
+    def __str__(self):
         pass
 
-    # Output: return a tuple with strings of the suitable taste types
-    # Possible strings: ("sweet", "sour", "salty", "bitter", "umami")
     @abstractmethod
     def tastes(self):
+        """
+
+        :return: List of tastes that could include: "sweet", "sour", "salty", "bitter", "umami"
+        """
         pass
 
 
 class Apple(FoodProp):
     def __init__(self):
-        pass
-
-    @classmethod
-    def to_string(cls):
-        return "apple"
-
-    @classmethod
-    def tastes(cls):
-        return (sweet)
+        super().__init__()
 
     def __str__(self):
-        return self.to_string()
+        return "apple"
+
+    @property
+    def tastes(self):
+        return [sweet]
 
 
 class Orange(FoodProp):
     def __init__(self):
-        pass
-
-    @classmethod
-    def to_string(cls):
-        return "orange"
-
-    @classmethod
-    def tastes(cls):
-        return (sweet, sour)
+        super().__init__()
 
     def __str__(self):
-        return self.to_string()
+        return "orange"
+
+    @property
+    def tastes(self):
+        return [sweet, sour]
 
 
 def get_food(food_type: str):

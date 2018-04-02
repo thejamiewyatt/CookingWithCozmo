@@ -4,7 +4,13 @@ from cozmo_taste_game import get_food
 from cozmo_taste_game import Taster
 
 
-def cozmo_program(robot: Robot):
+def cozmo_program(robot: Robot) -> None:
+    """
+    Cozmo taste game main.
+
+    :param robot:
+    :return: None
+    """
     taster = Taster(robot)
     taster.get_new_preferences()
     # This is where Cozmo will try to recognize what food is in front of him
