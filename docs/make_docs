@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Generate RST files
 sphinx-apidoc -f ../cozmo_taste_game -o cozmo_taste_game
 
+# Prettify RST files
+python3.5 prettify_doc.py `find cozmo_taste_game/ -name '*.rst'`
+
+# Make HTML
 make clean && make html

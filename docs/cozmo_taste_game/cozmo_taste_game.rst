@@ -1,19 +1,21 @@
-cozmo\_taste\_game package
-==========================
+cozmo_taste_game package
+========================
 
-Submodules
-----------
+.. automodule:: cozmo_taste_game
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
-cozmo\_taste\_game.FoodProp module
-----------------------------------
+cozmo_taste_game.FoodProp module
+--------------------------------
 
 .. automodule:: cozmo_taste_game.FoodProp
     :members:
     :undoc-members:
     :show-inheritance:
 
-cozmo\_taste\_game.Taster module
---------------------------------
+cozmo_taste_game.Taster module
+------------------------------
 
 .. automodule:: cozmo_taste_game.Taster
     :members:
@@ -21,10 +23,3 @@ cozmo\_taste\_game.Taster module
     :show-inheritance:
 
 
-Module contents
----------------
-
-.. automodule:: cozmo_taste_game
-    :members:
-    :undoc-members:
-    :show-inheritance:
