@@ -10,7 +10,7 @@ class Taster:
         :param robot: A Cozmo instance
         """
         self.robot = robot
-        self.tastes = ["sweet", "salty", "sour", "savory", "bitter"]
+        self.tastes = ["sweet", "salty", "sour", "umami", "bitter"]
         self.reactions = [  # Ranked negative to positive
             Triggers.MajorFail,
             Triggers.CubeMovedUpset,
