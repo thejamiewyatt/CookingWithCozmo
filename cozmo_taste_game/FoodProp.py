@@ -6,7 +6,7 @@ sour = "sour"
 salty = "salty"
 bitter = "bitter"
 umami = "umami"
-savory = "umami"
+savory = umami
 sweet = "sweet"
 
 
@@ -27,28 +27,61 @@ class FoodProp:
         pass
 
 
-class Apple(FoodProp):
+
+class Hotdog(FoodProp):
     def __init__(self):
         super().__init__()
 
     def __str__(self):
-        return "apple"
+        return "hotdog"
+
+    @property
+    def tastes(self):
+        return [savory]
+
+class Watermelon(FoodProp):
+    def __init__(self):
+        super().__init__()
+
+    def __str__(self):
+        return "watermelon"
 
     @property
     def tastes(self):
         return [sweet]
 
-
-class Orange(FoodProp):
+class Saltshaker(FoodProp):
     def __init__(self):
         super().__init__()
 
     def __str__(self):
-        return "orange"
+        return "saltshaker"
 
     @property
     def tastes(self):
-        return [sweet, sour]
+        return [salty]
+
+class Broccoli(FoodProp):
+    def __init__(self):
+        super().__init__()
+
+    def __str__(self):
+        return "broccoli"
+
+    @property
+    def tastes(self):
+        return [bitter]
+
+class Lemon(FoodProp):
+    def __init__(self):
+        super().__init__()
+
+    def __str__(self):
+        return "lemon"
+
+    @property
+    def tastes(self):
+        return [sour]
 
 
 def get_food(food_type: str):
@@ -61,6 +94,9 @@ def get_food(food_type: str):
     """
     food_type = food_type.lower()
     return {
-        "apple": Apple(),
-        "orange": Orange()
+        "hotdog": Hotdog(),
+        "watermelon": Watermelon(),
+        "broccoli": Broccoli(),
+        "saltshaker": Saltshaker(),
+        "lemon": Lemon()
     }[food_type]
