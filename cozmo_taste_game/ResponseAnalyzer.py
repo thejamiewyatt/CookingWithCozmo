@@ -1,3 +1,7 @@
+# Class responsible for analyzing the json returned from the server
+# At the moment, getFoundFood() will only return a valid value if the same
+# Prop has been seen 3 times in a row with a confidence > .7
+
 class ResponseAnalyzer():
 
     def __init__(self):
