@@ -3,15 +3,26 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Cozmo Taste Game's documentation!
-============================================
+.. |br| raw:: html
 
-Contents:
+   <br />
+
+Cozmo Taste Game Documentation
+==============================
+
+Welcome to the documentation for the Cozmo Taste Game project! |br|
+A game where you try to guess Cozmo's favorite taste!
+
+.. toctree::
+   :caption: Getting Started
+
+   setup
 
 .. toctree::
    :maxdepth: 2
+   :caption: API
 
-   cozmo_taste_game/cozmo_taste_game.rst
+   cozmo_taste_game/cozmo_taste_game
 
 
 Indices and tables
