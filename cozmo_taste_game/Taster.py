@@ -40,6 +40,7 @@ class Taster:
         print('Cozmo ranks a(n) {} as a {}'.format(food, rank))
         animation_trigger = self.reactions[rank]
         self.robot.play_anim_trigger(animation_trigger).wait_for_completed()
+        return rank
 
     def rank_food(self, food):
         """

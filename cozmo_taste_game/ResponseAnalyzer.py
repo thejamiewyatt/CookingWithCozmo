@@ -4,11 +4,13 @@
 
 class ResponseAnalyzer():
 
-    def __init__(self):
+    def __init__(self, threshold, streakThreshold):
         self.streak = 0
         self.streakFood = None
         self.identifiedFood = None
         self.hasBeenChecked = True
+        self.threshold = threshold
+        self.streakThreashold = streakThreshold
         
     # input: response json
     def analyzeResponse(self, response):
@@ -30,10 +32,10 @@ class ResponseAnalyzer():
                 highestEntry = entries[key]
 
         
-        if highestConfidence > 0.7:
-            if(highestEntry == self.streakFood):
+        if highestConfidence > self.threshold:
+            if(highestEntry != 'garbage' and highestEntry == self.streakFood):
                 self.streak += 1
-                if(self.streak >= 3):
+                if(self.streak >= self.streakThreashold):
                     self.identifiedFood = self.streakFood
                     self.streak = 0
             else:

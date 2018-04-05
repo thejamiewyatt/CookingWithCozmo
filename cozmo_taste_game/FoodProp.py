@@ -55,7 +55,7 @@ class Saltshaker(FoodProp):
         super().__init__()
 
     def __str__(self):
-        return "saltshaker"
+        return "salt"
 
     @property
     def tastes(self):
