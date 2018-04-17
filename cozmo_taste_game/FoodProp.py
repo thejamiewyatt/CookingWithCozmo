@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from enum import Enum
 
 # Constants of the taste types so a small typo doesn't cause
 # Use these and not raw strings
@@ -9,13 +10,22 @@ umami = "umami"
 savory = umami
 sweet = "sweet"
 
+class FT(Enum):
+    protein = 0
+    fruit = 1
+    vegetable = 2
+    grain = 3
 
 class FoodProp:
     def __init__(self):
         pass
-
+#
     @abstractmethod
     def __str__(self):
+        pass
+
+    @abstractmethod
+    def food_groups(self):
         pass
 
     @abstractmethod
@@ -39,6 +49,10 @@ class Hotdog(FoodProp):
     def tastes(self):
         return [savory]
 
+    @property
+    def food_groups(self):
+        return [FT.protein]
+
 class Watermelon(FoodProp):
     def __init__(self):
         super().__init__()
@@ -49,6 +63,10 @@ class Watermelon(FoodProp):
     @property
     def tastes(self):
         return [sweet]
+
+    @property
+    def food_groups(self):
+        return [FT.fruit]
 
 class Saltshaker(FoodProp):
     def __init__(self):
@@ -61,6 +79,10 @@ class Saltshaker(FoodProp):
     def tastes(self):
         return [salty]
 
+    @property
+    def food_groups(self):
+        return []
+
 class Broccoli(FoodProp):
     def __init__(self):
         super().__init__()
@@ -71,6 +93,10 @@ class Broccoli(FoodProp):
     @property
     def tastes(self):
         return [bitter]
+
+    @property
+    def food_groups(self):
+        return [FT.vegetable]
 
 class Lemon(FoodProp):
     def __init__(self):
@@ -83,6 +109,9 @@ class Lemon(FoodProp):
     def tastes(self):
         return [sour]
 
+    @property
+    def food_groups(self):
+        return [FT.fruit]
 
 def get_food(food_type: str):
     """
