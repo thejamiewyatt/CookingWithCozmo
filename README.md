@@ -9,6 +9,9 @@ python3.6 main.py
 ```
 
 #### Sample workflow for working with git from the command line
+
+IMPORTANT: DO NOT WORK DIRECTLY FROM MASTER!!!!!  Change the following commands accordingly.
+
 Get the latest changes
 ```
 git pull -r
