@@ -5,13 +5,14 @@ Prop has been seen 3 times in a row with a confidence > .7
 
 
 class ResponseAnalyzer:
-    def __init__(self, threshold, streak_threshold):
+    def __init__(self, threshold, streak_threshold, isDebugMode):
         self.streak = 0
         self.streakFood = None
-        self.identifiedFood = None
+        self.identified_food = None
         self.has_been_checked = True
         self.threshold = threshold
         self.streak_threshold = streak_threshold
+        self.DEBUG_MODE = isDebugMode
 
     # input: response json
     def analyze_response(self, response):
@@ -36,7 +37,7 @@ class ResponseAnalyzer:
             if highest_entry != 'garbage' and highest_entry == self.streakFood:
                 self.streak += 1
                 if self.streak >= self.streak_threshold:
-                    self.identifiedFood = self.streakFood
+                    self.identified_food = self.streakFood
                     self.streak = 0
             else:
                 self.streakFood = highest_entry
@@ -44,17 +45,21 @@ class ResponseAnalyzer:
 
     def getFoundFood(self):
         self.has_been_checked = True
-        if self.identifiedFood is not None:
-            food = self.identifiedFood
-            self.identifiedFood = None
+        if self.identified_food is not None:
+            food = self.identified_food
+            self.identified_food = None
             return food
         else:
             # Occurs when no valid food has been identified
             raise Exception("")
 
+    def force_input(self, foodItem):
+        self.identified_food = foodItem
+        self.has_been_checked = False
+
     def has_found_food(self):
         self.has_been_checked = True
-        if self.identifiedFood is not None:
+        if self.identified_food is not None:
             return True
         else:
             return False
