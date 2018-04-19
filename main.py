@@ -23,34 +23,36 @@ MIN_ROTATE_ANGLE = -10
 MAX_ROTATE_ANGLE = 10
 currentAngle = 0
 
-if(len(argv) != 2):
+if len(argv) != 2:
     print("Error: please supply endpoint url")
     exit(-1)
 else:
     endpointURL = argv[1]
-    #r = requests.get(endpointURL)
-    #if(r.status_code != 200 or r.status_code != 405):
+    # r = requests.get(endpointURL)
+    # if(r.status_code != 200 or r.status_code != 405):
     #    raise requests.exceptions.HTTPError(f'{endpointURL} is not available')
     #
+
 
 def on_new_camera_image(evt, **kwargs):
     global cameraLock
     global foodAnalyzer
     global endpointURL
-    if(foodAnalyzer.hasBeenChecked and cameraLock.acquire(False)):
-        pilImage = kwargs['image'].raw_image
+    if foodAnalyzer.has_been_checked and cameraLock.acquire(False):
+        pil_image = kwargs['image'].raw_image
         photo_location = f"photos/fromcozmo-{kwargs['image'].image_number}.jpeg"
         print(f"photo_location is {photo_location}")
-        pilImage.save(photo_location, "JPEG")
+        pil_image.save(photo_location, "JPEG")
 
         with open(photo_location, 'rb') as f:
             # TODO: automate model mounting
             response = requests.post(endpointURL, files={'file': f})
             if response.status_code == 200:
-                foodAnalyzer.analyzeResponse(response.json())
-        
+                foodAnalyzer.analyze_response(response.json())
+
         cameraLock.release()
- 
+
+
 def cozmo_program(robot: cozmo.robot.Robot):
     global cameraLock
     global foodAnalyzer
@@ -72,38 +74,36 @@ def cozmo_program(robot: cozmo.robot.Robot):
     robot.say_text("I'm hungry").wait_for_completed()
     robot.add_event_handler(cozmo.world.EvtNewCameraImage, on_new_camera_image)
 
-
     # Main loop
     while True:
 
         # Check to see if critical section is open
-        if(foodAnalyzer.hasBeenChecked == False and cameraLock.acquire(False) == True):
+        if foodAnalyzer.hasBeenChecked == False and cameraLock.acquire(False) == True:
             print(f'{foodAnalyzer.streakFood}')
-            if(foodAnalyzer.hasFoundFood()):
+            if foodAnalyzer.has_found_food():
                 food = get_food(foodAnalyzer.getFoundFood())
                 robot.say_text(str(food)).wait_for_completed()
                 rank = taster.taste_food(food)
             else:
 
-                if(currentAngle <= MIN_ROTATE_ANGLE):
-                    rotationAmount = 5 + r.randint(0,7)
-                elif(currentAngle >= MAX_ROTATE_ANGLE):
-                    rotationAmount = -5 - r.randint(0,7)
+                if currentAngle <= MIN_ROTATE_ANGLE:
+                    rotation_amount = 5 + r.randint(0, 7)
+                elif currentAngle >= MAX_ROTATE_ANGLE:
+                    rotation_amount = -5 - r.randint(0, 7)
                 else:
-                    rotationAmount = 5 if r.getrandbits(1) == 0 else -5
-                    if(rotationAmount < 0):
-                        rotationAmount -= r.randint(0,7)
+                    rotation_amount = 5 if r.getrandbits(1) == 0 else -5
+                    if rotation_amount < 0:
+                        rotation_amount -= r.randint(0, 7)
                     else:
-                        rotationAmount += r.randint(0,7)
+                        rotation_amount += r.randint(0, 7)
 
-                currentAngle += rotationAmount
-                robot.turn_in_place(degrees(rotationAmount)).wait_for_completed()
+                currentAngle += rotation_amount
+                robot.turn_in_place(degrees(rotation_amount)).wait_for_completed()
 
-            cameraLock.release() 
+            cameraLock.release()
 
         else:
-            pass # Picture currently being taken or processing
-
+            pass  # Picture currently being taken or processing
 
 
 cozmo.run_program(cozmo_program, use_viewer=True, force_viewer_on_top=True)
