@@ -19,7 +19,7 @@ class Taster:
             Triggers.CodeLabHappy
         ]
 
-    def get_new_preferences(self):
+    def get_new_preferences(self) -> None:
         """
         Shuffles self.tastes so that the Taster has different taste preferences.
         self.tastes are ordered from LEAST favorite (index 0) to MOST favorite.
