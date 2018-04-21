@@ -43,7 +43,7 @@ class ResponseAnalyzer:
                 self.streakFood = highest_entry
                 self.streak = 0
 
-    def getFoundFood(self):
+    def get_found_food(self):
         self.has_been_checked = True
         if self.identified_food is not None:
             food = self.identified_food
