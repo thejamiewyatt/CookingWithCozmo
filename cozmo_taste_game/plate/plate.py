@@ -3,6 +3,7 @@ from cozmo_taste_game import FoodProp
 
 
 class Plate(ABC):
+    """Abstract plate interface."""
     def __init__(self):
         self.foods = []
 
@@ -26,5 +27,5 @@ class Plate(ABC):
 
     @property
     @abstractmethod
-    def is_full(self):
+    def is_full(self) -> bool:
         pass

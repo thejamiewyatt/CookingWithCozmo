@@ -2,7 +2,7 @@ from .robot import Robot
 
 
 class FakeRobot(Robot):
-    """Fake robot used for development and testing."""
+    """Fake robot used to simulate a game in the absence of Cozmo"""
     def __init__(self):
         pass
 

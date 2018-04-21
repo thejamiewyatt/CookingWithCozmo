@@ -5,7 +5,7 @@ from random import randint, getrandbits
 
 
 class CozmoRobot(Robot):
-    """Wrapper class for a :class:`~cozmo.objects.LightCube`"""
+    """Wrapper class for a :class:`~cozmo.objects.robot`"""
     def __init__(self, cozmo, on_new_camera_image):
         self.cozmo = cozmo
         self.cozmo.add_event_handler(EvtNewCameraImage, on_new_camera_image)
@@ -20,7 +20,7 @@ class CozmoRobot(Robot):
         self.cozmo.set_lift_height(0.0).wait_for_completed()
 
     def speak(self, text: str) -> None:
-        """Wrapper method for :meth:`~cozmo.objects.LightCube.set_lights_off`.
+        """Wrapper method for :meth:`~cozmo.robot.say_text`.
 
         :param text: The text to say
         :return: None
@@ -28,11 +28,19 @@ class CozmoRobot(Robot):
         self.cozmo.say_text(str(text)).wait_for_completed()
 
     def turn_in_place(self) -> None:
+        """Wrapper method for :meth:`~cozmo.robot.turn_in_place`.
+
+        :return: None
+        """
         rotation_amount = self.__get_rotation_amount()
         self.current_angle += rotation_amount
         self.cozmo.turn_in_place(degrees(rotation_amount)).wait_for_completed()
 
     def __get_rotation_amount(self) -> int:
+        """Gets amount to rotate.
+
+        :return: The amount to rotate
+        """
         min_rotate_angle = -10
         max_rotate_angle = 10
 
@@ -52,10 +60,18 @@ class CozmoRobot(Robot):
 
         return rotation_amount
 
-    def react_positively(self):
+    def react_positively(self) -> None:
+        """Performs a positive reaction.
+
+        :return: None
+        """
         print('Cozmo reacts positively')
 
-    def react_negatively(self):
+    def react_negatively(self) -> None:
+        """Performs a negative reaction.
+
+        :return: None
+        """
         print('Cozmo reacts negatively')
 
 

@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class FoodProp(ABC):
+    """Abstract Food Prop interface."""
     def __init__(self):
         pass
 
