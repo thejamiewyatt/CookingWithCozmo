@@ -9,7 +9,7 @@ cozmo\_taste\_game package
 cozmo\_taste\_game.FoodProp module
 ----------------------------------
 
-.. automodule:: cozmo_taste_game.FoodProp
+.. automodule:: cozmo_taste_game.food.FoodProp
     :members:
     :undoc-members:
     :show-inheritance:
