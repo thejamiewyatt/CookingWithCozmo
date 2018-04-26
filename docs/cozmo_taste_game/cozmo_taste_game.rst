@@ -6,18 +6,17 @@ cozmo\_taste\_game package
     :undoc-members:
     :show-inheritance:
 
-cozmo\_taste\_game.FoodProp module
-----------------------------------
+.. toctree::
 
-.. automodule:: cozmo_taste_game.FoodProp
-    :members:
-    :undoc-members:
-    :show-inheritance:
+    cozmo_taste_game.food
+    cozmo_taste_game.image_recognition
+    cozmo_taste_game.plate
+    cozmo_taste_game.robot
 
-cozmo\_taste\_game.Taster module
+cozmo\_taste\_game.taster module
 --------------------------------
 
-.. automodule:: cozmo_taste_game.Taster
+.. automodule:: cozmo_taste_game.taster
     :members:
     :undoc-members:
     :show-inheritance:
