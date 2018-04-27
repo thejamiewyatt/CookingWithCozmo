@@ -5,26 +5,43 @@ Setup
 
 2. Clone the repository onto your local machine.
 
-  * ``git clone https://github.com/Msherman4231/CozmoTasteProject.git``
+.. code-block:: bash
+
+   git clone https://github.com/Msherman4231/CozmoTasteProject.git
 
 3. Navigate to the repository.
 
-  * ``cd CozmoTasteProject``
+.. code-block:: bash
 
-4. Create a python3.6 virtual environment.
+   cd CozmoTasteProject
 
-  * See `the official python tutorial <https://docs.python.org/3/tutorial/venv.html>`_ for more information.
-  * It should be as easy as running the command:
-    ``python3.6 -m virtualenv venv``
+4. Create a python3.6 virtual environment. See `the official python tutorial
+   <https://docs.python.org/3/tutorial/venv.html>`_ for more information.
 
-5. Activate your virtual environment
+.. code-block:: bash
 
-  *  ``source venv/bin/activate``
+   python3.6 -m virtualenv venv
+
+5. Activate the virtual environment.
+
+.. code-block:: bash
+
+   source venv/bin/activate
 
 6. Install dependencies.
 
-  * ``pip install -r requirements.txt``
+.. code-block:: bash
+
+   pip install -r requirements.txt
 
 7. With Cozmo connected, run the main program. For details on connecting Cozmo, see `Getting Started With the Cozmo SDK <http://cozmosdk.anki.com/docs/getstarted.html>`_.
 
-  * ``python3.6 main.py``
+.. code-block:: bash
+
+   python3.6 main.py
+
+8. Or run the program with the -g flag to run it without Cozmo.
+
+.. code-block:: bash
+
+   python3.6 main.py -g

@@ -38,6 +38,10 @@ Build a Plate Game program please see the various links under API.
 
    cozmo_taste_game/cozmo_taste_game
 
+.. toctree::
+   :caption: About
+
+   credits
 
 Indices and tables
 ==================
@@ -45,9 +49,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
-Credits
-=======
-This project was produced by the Cozmopolitans: Alec Roques, Matt Sherman, Connor Ries,
-and Greg Held during the Spring 2018 semester at the University of
-Missouri - St. Louis for the St. Louis Science Center.
