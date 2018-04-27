@@ -40,7 +40,7 @@ Setup
 
    python3.6 main.py
 
-8. Or run the program with the -g flag to run it without Cozmo.
+8. Or use the -g flag to run a simulation of the program without Cozmo.
 
 .. code-block:: bash
 
