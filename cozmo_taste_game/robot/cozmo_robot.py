@@ -63,8 +63,8 @@ class CozmoRobot(Robot):
 
     def react_positively(self) -> None:
         """Performs a positive reaction. Chooses a random number
-            from 0 to 4 and plays reaction that is tied to that
-            number
+        from 0 to 4 and plays reaction that is tied to that number.
+
         :return: None
         """
         pos_reactions = [
@@ -93,8 +93,8 @@ class CozmoRobot(Robot):
 
     def react_negatively(self) -> None:
         """Performs a negative reaction. Chooses a random number
-            from 0 to 4 and plays reaction that is tied to that
-            number
+        from 0 to 4 and plays reaction that is tied to that number.
+
         :return: None
         """
 
