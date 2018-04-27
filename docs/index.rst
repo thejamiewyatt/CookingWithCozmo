@@ -30,7 +30,7 @@ setup to start developing the Cozmo Build a Plate Game project.
 For information about the various packages, modules, and functions used throughout the Cozmo
 Build a Plate Game program please see the various links under API.
 
-For even more information about this project please visit the various links under About.g
+For even more information about this project please visit the various links under About.
 
 .. toctree::
    :caption: Getting Started
