@@ -7,6 +7,7 @@ from cozmo.anim import Triggers
 
 class CozmoRobot(Robot):
     """Wrapper class for a :class:`~cozmo.objects.robot`"""
+
     def __init__(self, cozmo, on_new_camera_image):
         self.cozmo = cozmo
         self.cozmo.add_event_handler(EvtNewCameraImage, on_new_camera_image)
@@ -38,7 +39,7 @@ class CozmoRobot(Robot):
         self.cozmo.turn_in_place(degrees(rotation_amount)).wait_for_completed()
 
     def __get_rotation_amount(self) -> int:
-        """Gets amount to rotate.
+        """Gets an amount to rotate.
 
         :return: The amount to rotate
         """
@@ -67,29 +68,29 @@ class CozmoRobot(Robot):
 
         :return: None
         """
-        pos_reactions = [
+        positive_reactions = [
             Triggers.MajorWin,
             Triggers.CodeLabHappy,
             Triggers.CodeLabYes,
             Triggers.CodeLabAmazed,
             Triggers.CodeLabCelebrate
         ]
+
         num = randint(0, 4)
         if num == 0:
-            self.cozmo.say_text("That is Perfect!").wait_for_completed()
-            self.cozmo.play_anim_trigger(pos_reactions[num], ignore_body_track=True).wait_for_completed()
+            self.speak("That is Perfect!")
+            self.__react(positive_reactions[num])
         elif num == 1:
-            self.cozmo.play_anim_trigger(pos_reactions[num], ignore_body_track=True).wait_for_completed()
-            self.cozmo.say_text("Thank you!").wait_for_completed()
+            self.__react(positive_reactions[num])
+            self.speak("Thank you!")
         elif num == 2:
-            self.cozmo.play_anim_trigger(Triggers.CodeLabCurious).wait_for_completed()
-            self.cozmo.play_anim_trigger(pos_reactions[num], ignore_body_track=True).wait_for_completed()
+            self.__react(Triggers.CodeLabCurious)
+            self.__react(positive_reactions[num])
         elif num == 3:
-            self.cozmo.play_anim_trigger(pos_reactions[num], ignore_body_track=True).wait_for_completed()
+            self.__react(positive_reactions[num])
         else:
-            self.cozmo.say_text("Yes, you got it!").wait_for_completed()
-            self.cozmo.play_anim_trigger(pos_reactions[num], ignore_body_track=True).wait_for_completed()
-        print('Cozmo reacts positively')
+            self.speak("Yes, you got it!")
+            self.__react(positive_reactions[num])
 
     def react_negatively(self) -> None:
         """Performs a negative reaction. Chooses a random number
@@ -98,7 +99,7 @@ class CozmoRobot(Robot):
         :return: None
         """
 
-        neg_reactions = [
+        negative_reactions = [
             Triggers.MajorFail,
             Triggers.CubeMovedUpset,
             Triggers.CodeLabUnhappy,
@@ -107,20 +108,27 @@ class CozmoRobot(Robot):
         ]
         num = randint(0, 4)
         if num == 0:
-            self.cozmo.play_anim_trigger(neg_reactions[num], ignore_body_track=True).wait_for_completed()
-            self.cozmo.say_text("I don't need that").wait_for_completed()
+            self.__react(negative_reactions[num])
+            self.speak("I don't need that")
         elif num == 1:
-            self.cozmo.play_anim_trigger(neg_reactions[num], ignore_body_track=True).wait_for_completed()
-            self.cozmo.say_text("Try again please.").wait_for_completed()
+            self.__react(negative_reactions[num])
+            self.speak("Try again please.")
         elif num == 2:
-            self.cozmo.play_anim_trigger(Triggers.CodeLabCurious).wait_for_completed()
-            self.cozmo.say_text("No").wait_for_completed()
-            self.cozmo.play_anim_trigger(neg_reactions[num], ignore_body_track=True).wait_for_completed()
+            self.__react(Triggers.CodeLabCurious)
+            self.speak("No")
+            self.__react(negative_reactions[num])
         elif num == 3:
-            self.cozmo.say_text("That's not what I want.").wait_for_completed()
-            self.cozmo.play_anim_trigger(neg_reactions[num], ignore_body_track=True).wait_for_completed()
+            self.speak("That's not what I want.")
+            self.__react(negative_reactions[num])
         else:
-            self.cozmo.play_anim_trigger(neg_reactions[num], ignore_body_track=True).wait_for_completed()
+            self.__react(negative_reactions[num])
 
+    def __react(self, anim_trigger) -> None:
+        """Has cozmo perform a animation.
+
+        :param anim_trigger: The animation to perform
+        :return: None
+        """
+        self.cozmo.play_anim_trigger(anim_trigger, ignore_body_track=True).wait_for_completed()
 
 
