@@ -6,7 +6,7 @@ from cozmo.anim import Triggers
 
 
 class CozmoRobot(Robot):
-    """Wrapper class for a :class:`~cozmo.objects.robot`"""
+    """Wrapper class for a :class:`cozmo.robot.Robot`"""
 
     def __init__(self, cozmo, on_new_camera_image):
         self.cozmo = cozmo
@@ -22,7 +22,7 @@ class CozmoRobot(Robot):
         self.cozmo.set_lift_height(0.0).wait_for_completed()
 
     def speak(self, text: str) -> None:
-        """Wrapper method for :meth:`~cozmo.robot.say_text`.
+        """Wrapper method for :meth:`~cozmo.robot.Robot.say_text`.
 
         :param text: The text to say
         :return: None
@@ -30,7 +30,7 @@ class CozmoRobot(Robot):
         self.cozmo.say_text(str(text)).wait_for_completed()
 
     def turn_in_place(self) -> None:
-        """Wrapper method for :meth:`~cozmo.robot.turn_in_place`.
+        """Wrapper method for :meth:`~cozmo.robot.Robot.turn_in_place`.
 
         :return: None
         """
@@ -79,18 +79,18 @@ class CozmoRobot(Robot):
         num = randint(0, 4)
         if num == 0:
             self.speak("That is Perfect!")
-            self.__react(positive_reactions[num])
+            self.__play_animation(positive_reactions[num])
         elif num == 1:
-            self.__react(positive_reactions[num])
+            self.__play_animation(positive_reactions[num])
             self.speak("Thank you!")
         elif num == 2:
-            self.__react(Triggers.CodeLabCurious)
-            self.__react(positive_reactions[num])
+            self.__play_animation(Triggers.CodeLabCurious)
+            self.__play_animation(positive_reactions[num])
         elif num == 3:
-            self.__react(positive_reactions[num])
+            self.__play_animation(positive_reactions[num])
         else:
             self.speak("Yes, you got it!")
-            self.__react(positive_reactions[num])
+            self.__play_animation(positive_reactions[num])
 
     def react_negatively(self) -> None:
         """Performs a negative reaction. Chooses a random number
@@ -108,23 +108,23 @@ class CozmoRobot(Robot):
         ]
         num = randint(0, 4)
         if num == 0:
-            self.__react(negative_reactions[num])
+            self.__play_animation(negative_reactions[num])
             self.speak("I don't need that")
         elif num == 1:
-            self.__react(negative_reactions[num])
+            self.__play_animation(negative_reactions[num])
             self.speak("Try again please.")
         elif num == 2:
-            self.__react(Triggers.CodeLabCurious)
+            self.__play_animation(Triggers.CodeLabCurious)
             self.speak("No")
-            self.__react(negative_reactions[num])
+            self.__play_animation(negative_reactions[num])
         elif num == 3:
             self.speak("That's not what I want.")
-            self.__react(negative_reactions[num])
+            self.__play_animation(negative_reactions[num])
         else:
-            self.__react(negative_reactions[num])
+            self.__play_animation(negative_reactions[num])
 
-    def __react(self, anim_trigger) -> None:
-        """Has cozmo perform a animation.
+    def __play_animation(self, anim_trigger) -> None:
+        """Wrapper method for :meth:`~cozmo.robot.Robot.play_anim_trigger`.
 
         :param anim_trigger: The animation to perform
         :return: None

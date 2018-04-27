@@ -51,7 +51,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Cozmo Taste Game'
+project = 'Cozmo Build a Plate Game'
 copyright = '2018, The Cozmopolitans'
 author = 'The Cozmopolitans'
 
@@ -257,7 +257,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'cozmotastegame', 'Cozmo Taste Game Documentation',
+    (master_doc, 'cozmobuildaplategame', 'Cozmo Build a Plate Game Documentation',
      [author], 1)
 ]
 
@@ -271,8 +271,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'CozmoTasteGame', 'Cozmo Taste Game Documentation',
-     author, 'CozmoTasteGame', 'One line description of project.',
+    (master_doc, 'CozmoBuildAPlateGame', 'Cozmo Build a Plate Game Documentation',
+     author, 'CozmoBuildAPlateGame', 'One line description of project.',
      'Miscellaneous'),
 ]
 
@@ -290,4 +290,7 @@ texinfo_documents = [
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/', None),
+    'cozmo': ('http://cozmosdk.anki.com/docs/', None)
+}
