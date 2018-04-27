@@ -35,7 +35,7 @@ For even more information about this project please visit the various links unde
 .. toctree::
    :caption: Getting Started
 
-   setup
+   pages/setup
 
 .. toctree::
    :maxdepth: 2
@@ -46,8 +46,8 @@ For even more information about this project please visit the various links unde
 .. toctree::
    :caption: About
 
-   how_to_train
-   credits
+   pages/how_to_train
+   pages/credits
 
 Indices and tables
 ==================
