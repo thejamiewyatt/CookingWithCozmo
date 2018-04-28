@@ -27,12 +27,20 @@ and how it is played, please click the following button to download the user's g
 Please review the Setup page under Getting Started for instructions on how to get
 setup to start developing the Cozmo Build a Plate Game project.
 
-For information about the various packages, modules, and functions used throughout the Cozmo
+How a high level overview of the various packages used throughout the code see Class Diagrams
+under Diagrams.
+
+For more detailed information about the various packages, modules, and functions used throughout the Cozmo
 Build a Plate Game program please see the various links under API.
 
-For even more information about this project please visit the various links under About.
+We also have information about how the Image Recognition works under Image Recognition.
+
+For information about how this documentation website was built and how to maintain it visit
+Documentation under About.
+
 
 .. toctree::
+   :maxdepth: 2
    :caption: Getting Started
 
    pages/setup
@@ -44,19 +52,22 @@ For even more information about this project please visit the various links unde
    cozmo_taste_game/cozmo_taste_game
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Diagrams
 
    pages/class_diagrams
 
 .. toctree::
+   :maxdepth: 2
    :caption: Image Recognition
 
    pages/how_to_train
 
 .. toctree::
+   :maxdepth: 2
    :caption: About
 
+   pages/documentation
    pages/credits
 
 Indices and tables
