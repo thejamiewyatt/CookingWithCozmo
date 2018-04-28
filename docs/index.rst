@@ -44,9 +44,18 @@ For even more information about this project please visit the various links unde
    cozmo_taste_game/cozmo_taste_game
 
 .. toctree::
-   :caption: About
+   :caption: Diagrams
+
+   pages/class_diagrams
+
+.. toctree::
+   :caption: Image Recognition
 
    pages/how_to_train
+
+.. toctree::
+   :caption: About
+
    pages/credits
 
 Indices and tables
