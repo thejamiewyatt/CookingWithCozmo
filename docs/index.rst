@@ -44,6 +44,7 @@ For even more information about this project please visit the various links unde
    cozmo_taste_game/cozmo_taste_game
 
 .. toctree::
+   :maxdepth: 1
    :caption: Diagrams
 
    pages/class_diagrams
