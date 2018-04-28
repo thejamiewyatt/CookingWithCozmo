@@ -27,7 +27,7 @@ and how it is played, please click the following button to download the user's g
 Please review the Setup page under Getting Started for instructions on how to get
 setup to start developing the Cozmo Build a Plate Game project.
 
-How a high level overview of the various packages used throughout the code see Class Diagrams
+For a high level overview of how the various packages are used throughout the code see Class Diagrams
 under Diagrams.
 
 For more detailed information about the various packages, modules, and functions used throughout the Cozmo
