@@ -7,8 +7,7 @@ class ColorfulPlate(Plate):
     """Colorful plate class: the goal is to fill the plate with colorful foods."""
     def __init__(self):
         super().__init__()
-        self.goal_colors = ['red', 'orange', 'yellow', 'green', 'blue']
-        self.goal_num_food = len(self.goal_colors)
+        self.goal_num_colors = 4
 
     def add_food(self, food: FoodProp) -> None:
         """Adds a food to the plate
@@ -41,11 +40,11 @@ class ColorfulPlate(Plate):
 
     @property
     def is_full(self) -> bool:
-        """The plate is full if every goal_color is on the plate.
+        """The plate is full if there is a certain number of colors.
         :return: bool
         """
-        for goal_color in self.goal_colors:
-            if goal_color not in self.colors:
-                return False
-        return True
+        if self.goal_num_colors == len(self.colors):
+            return True
+        else:
+            return False
 

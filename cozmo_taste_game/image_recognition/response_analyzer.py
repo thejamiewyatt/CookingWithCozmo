@@ -2,6 +2,7 @@
 At the moment, getFoundFood() will only return a valid value if the same
 Prop has been seen 3 times in a row with a confidence > .7
 """
+from .tensor_functions import analyze_photo
 
 
 class ResponseAnalyzer:
@@ -15,26 +16,21 @@ class ResponseAnalyzer:
         self.DEBUG_MODE = isDebugMode
 
     # input: response json
-    def analyze_response(self, response):
+    def analyze_response(self, file_name):
         self.has_been_checked = False
         highest_confidence = 0.0
         highest_entry = ''
 
-        entries = {}
 
-        for key in response.keys():
-            if key == "answer":
-                for guess in response[key].keys():
-                    print(f"guess: {guess}")
-                    entries[response[key][guess]] = guess
-        for key in entries.keys():
-            print(f'{entries[key]}: {key}')
-            if key > highest_confidence:
-                highest_confidence = key
-                highest_entry = entries[key]
+        response = analyze_photo(file_name)
+        print(response)
+        for food_name, confidence in response.items():
+            if confidence > highest_confidence:
+                highest_confidence = confidence
+                highest_entry = food_name
 
         if highest_confidence > self.threshold:
-            if highest_entry != 'garbage' and highest_entry == self.streakFood:
+            if highest_entry != 'nothing' and highest_entry == self.streakFood:
                 self.streak += 1
                 if self.streak >= self.streak_threshold:
                     self.identified_food = self.streakFood

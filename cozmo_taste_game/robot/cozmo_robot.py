@@ -8,10 +8,12 @@ from cozmo.anim import Triggers
 class CozmoRobot(Robot):
     """Wrapper class for a :class:`cozmo.robot.Robot`"""
 
-    def __init__(self, cozmo, on_new_camera_image):
+    def __init__(self, cozmo):
         self.cozmo = cozmo
-        self.cozmo.add_event_handler(EvtNewCameraImage, on_new_camera_image)
         self.current_angle = 0
+
+    def add_event_handler(self, on_new_camera_image):
+        self.cozmo.add_event_handler(EvtNewCameraImage, on_new_camera_image)
 
     def set_start_position(self) -> None:
         """Sets the start position.

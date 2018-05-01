@@ -11,7 +11,6 @@ class FoodProp(ABC):
         pass
 
     @property
-    @abstractmethod
     def food_groups(self):
         pass
 
