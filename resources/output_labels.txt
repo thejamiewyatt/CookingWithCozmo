@@ -1,0 +1,12 @@
+blueberry
+broccoli
+carrot
+cheese
+corn
+cupcake
+grapes
+hotdog
+milk
+nothing
+orange
+watermelon
