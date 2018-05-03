@@ -124,6 +124,20 @@ class CozmoRobot(Robot):
             self.__play_animation(negative_reactions[num])
         else:
             self.__play_animation(negative_reactions[num])
+            
+    def drive_to_plate_and_celebrate(self, distance, speed, deg) -> None:
+        """
+        :param distance: distance to drive in mm
+        :param speed: speed that cozmo will drive
+        :param deg: degrees cozmo will turn
+        :return: None
+        """
+        #
+        self.cozmo.turn_in_place(degrees(deg)).wait_for_completed()
+        self.cozmo.drive_straight(distance_mm(distance), speed_mmps(speed)).wait_for_completed()
+        self.cozmo.play_anim_trigger(Triggers.PopAWheelieInitial, ignore_body_track=True).wait_for_completed()
+        self.cozmo.play_anim_trigger(Triggers.FeedingAteFullEnough_Normal).wait_for_completed()
+        self.cozmo.play_anim_trigger(Triggers.DriveEndHappy).wait_for_completed()
 
     def __play_animation(self, anim_trigger) -> None:
         """Wrapper method for :meth:`~cozmo.robot.Robot.play_anim_trigger`.
