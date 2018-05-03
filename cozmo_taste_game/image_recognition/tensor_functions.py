@@ -1,4 +1,9 @@
-import argparse
+'''
+This file contains code that runs tensorflow. Most of it should only be changed if the model type is switched,
+or you know what you are doing.
+'''
+
+
 import os
 import time
 import numpy as np
@@ -6,6 +11,8 @@ import tensorflow as tf
 from globals import resource_dir
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
+
 
 def load_graph(model_file):
     global graph
@@ -110,6 +117,13 @@ def analyze_photo(filename):
 
 
 def allowed_file(filename):
+    '''
+    Checks to see if the filename supplied is in ALLOWED_EXTENTIONS
+
+    :param filename: a file name to be checked
+    :return: True if the filename is valid, False otherwise
+    '''
+
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
