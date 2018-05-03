@@ -22,3 +22,7 @@ class Robot(ABC):
     @abstractmethod
     def react_negatively(self) -> None:
         pass
+    
+    @abstractmethod
+    def check_plate_and_celebrate(self, distance, speed, deg) -> None:
+        pass
