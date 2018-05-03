@@ -5,6 +5,11 @@ import numpy as np
 import tensorflow as tf
 from sys import argv
 
+'''
+A standalone program which analyzes a picture. 
+Note: the model and labels that are being tested should be in ./output
+
+'''
 
 
 def load_graph(model_file):
@@ -118,6 +123,3 @@ graph = load_graph(model_file)
 r = analyze_photo(photo_location)
 print(r) 
 
-time.sleep(2)
-         
-   
