@@ -80,7 +80,9 @@ def cozmo_program(robot):
 
         else:
             pass  # Picture currently being taken or processing
-
+    
+    robot.check_plate_and_celebrate(0, 10, -130)
+    
 
 def on_new_camera_image(evt, **kwargs):
     global food_analyzer
