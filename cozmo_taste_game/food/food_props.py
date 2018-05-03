@@ -1,6 +1,7 @@
 from .food_prop import FoodProp
 from .food_group import FoodGroup
 
+
 class Hotdog(FoodProp):
     def __init__(self):
         super().__init__()
@@ -145,8 +146,16 @@ class Orange(FoodProp):
         return 'orange'
 
 
+class Corn(FoodProp):
+    def __init__(self):
+        super().__init__()
 
+    def __str__(self):
+        return 'corn'
 
+    @property
+    def color(self):
+        return 'yellow'
 
 
 def get_food(food_type: str):
@@ -169,5 +178,6 @@ def get_food(food_type: str):
         "carrot": Carrot(),
         "cheese": Cheese(),
         "milk": Milk(),
-        "orange": Orange()
+        "orange": Orange(),
+        "corn": Corn()
     }[food_type]

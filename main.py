@@ -37,8 +37,8 @@ def cozmo_program(robot):
     create_photo_directory()
     plate = ColorfulPlate()
     robot.add_event_handler(on_new_camera_image)
-    #robot.speak('I''m hungry')
-    #robot.set_start_position()
+    robot.speak('I''m hungry')
+    robot.set_start_position()
 
     while not plate.is_full:
 
@@ -64,9 +64,15 @@ def cozmo_program(robot):
                 if plate.can_place_food(food):
                     robot.react_positively()
                     plate.add_food(food)
+                    if not plate.is_full:
+                        robot.speak("Please add another food to the plate")
+
                 else:
                     print('cannot place the food')
+                    robot.speak('There is already a {} food on the plate'.format(food.color))
                     robot.react_negatively()
+
+                robot.set_start_position()
 
                 print(plate)
                 print()

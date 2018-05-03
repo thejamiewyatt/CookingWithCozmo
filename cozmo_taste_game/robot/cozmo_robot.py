@@ -20,7 +20,7 @@ class CozmoRobot(Robot):
 
         :return: None
         """
-        self.cozmo.set_head_angle(degrees(10.0)).wait_for_completed()
+        self.cozmo.set_head_angle(degrees(0)).wait_for_completed()
         self.cozmo.set_lift_height(0.0).wait_for_completed()
 
     def speak(self, text: str) -> None:
@@ -125,7 +125,7 @@ class CozmoRobot(Robot):
         else:
             self.__play_animation(negative_reactions[num])
             
-    def drive_to_plate_and_celebrate(self, distance, speed, deg) -> None:
+    def check_plate_and_celebrate(self, distance, speed, deg) -> None:
         """
         :param distance: distance to drive in mm
         :param speed: speed that cozmo will drive
@@ -133,8 +133,9 @@ class CozmoRobot(Robot):
         :return: None
         """
         #
+        self.speak("Congratulations, you filled up the plate!")
         self.cozmo.turn_in_place(degrees(deg)).wait_for_completed()
-        self.cozmo.drive_straight(distance_mm(distance), speed_mmps(speed)).wait_for_completed()
+        # self.cozmo.drive_straight(distance_mm(distance), speed_mmps(speed)).wait_for_completed()
         self.cozmo.play_anim_trigger(Triggers.PopAWheelieInitial, ignore_body_track=True).wait_for_completed()
         self.cozmo.play_anim_trigger(Triggers.FeedingAteFullEnough_Normal).wait_for_completed()
         self.cozmo.play_anim_trigger(Triggers.DriveEndHappy).wait_for_completed()

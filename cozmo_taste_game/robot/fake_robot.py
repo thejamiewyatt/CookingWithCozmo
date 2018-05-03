@@ -20,3 +20,6 @@ class FakeRobot(Robot):
 
     def react_negatively(self) -> None:
         print('Cozmo reacts negatively')
+
+    def check_plate_and_celebrate(self, distance, speed, deg):
+        print('Cozmo checks plate and celebrates')
