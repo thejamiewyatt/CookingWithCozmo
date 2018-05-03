@@ -1,4 +1,5 @@
 import os
 
-project_root = os.path.abspath('.')
-resource_dir = f'{project_root}/resources'
+#: Root directory of the package to help load ``.wav`` files.
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+resource_dir = f'{ROOT_DIR}/resources'
