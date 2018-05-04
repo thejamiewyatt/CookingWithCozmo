@@ -8,6 +8,10 @@ class Robot(ABC):
         pass
 
     @abstractmethod
+    def add_event_handler(self, on_new_camera_image) -> None:
+        pass
+
+    @abstractmethod
     def set_start_position(self) -> None:
         pass
 

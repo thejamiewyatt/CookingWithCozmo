@@ -12,7 +12,7 @@ class CozmoRobot(Robot):
         self.cozmo = cozmo
         self.current_angle = 0
 
-    def add_event_handler(self, on_new_camera_image):
+    def add_event_handler(self, on_new_camera_image) -> None:
         self.cozmo.add_event_handler(EvtNewCameraImage, on_new_camera_image)
 
     def set_start_position(self) -> None:

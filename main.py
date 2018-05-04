@@ -1,13 +1,12 @@
 import threading
-import traceback
 import cozmo
 import os
 import shutil
-from sys import argv, exit
+from sys import argv
 from time import sleep
 from random import choice
 
-from cozmo_taste_game import Robot, FakeRobot, CozmoRobot
+from cozmo_taste_game import FakeRobot, CozmoRobot
 from cozmo_taste_game import ColorfulPlate, get_food
 from cozmo_taste_game import ResponseAnalyzer
 
@@ -23,16 +22,18 @@ if len(argv) > 1:
         DEBUG_MODE = True
 
 
-
-def cozmo_program(robot):
+def cozmo_program(robot=None):
     global food_analyzer
     global camera_lock
     global photo_location
     photo_location = None
 
-    robot = CozmoRobot(robot)
+    if DEBUG_MODE:
+        robot = FakeRobot()
+    else:
+        robot = CozmoRobot(robot)
 
-    foods = ['hotdog', 'lemon', 'saltshaker', 'broccoli', 'watermelon']
+    foods = ['hotdog', 'milk', 'blueberry', 'broccoli', 'cupcake', 'carrot']
 
     create_photo_directory()
     plate = ColorfulPlate()
@@ -68,27 +69,24 @@ def cozmo_program(robot):
                         robot.speak("Please add another food to the plate")
 
                 else:
-                    print('cannot place the food')
                     robot.speak('There is already a {} food on the plate'.format(food.color))
                     robot.react_negatively()
 
                 robot.set_start_position()
 
-                print(plate)
-                print()
+                print('{}\n'.format(plate))
 
             else:
                 pass
-                #robot.turn_in_place()
 
             if not DEBUG_MODE:
                 camera_lock.release()
 
         else:
             pass  # Picture currently being taken or processing
-    
+
     robot.check_plate_and_celebrate(0, 10, -130)
-    
+
 
 def on_new_camera_image(evt, **kwargs):
     global food_analyzer
@@ -112,20 +110,7 @@ def create_photo_directory():
         os.makedirs('photos')
 
 
-if not DEBUG_MODE:
-    #cozmo.run_program(CozmoRobot(cozmo_program, on_new_camera_image), use_viewer=True, force_viewer_on_top=True)
-    cozmo.run_program(cozmo_program, use_viewer=True, force_viewer_on_top=True)
-
+if DEBUG_MODE:
+    cozmo_program()
 else:
-    try:
-        cozmo_program(FakeRobot())
-    except AttributeError as ae:
-
-        print(traceback.format_exc())
-        if str(ae)[1:10] == "FakeRobot":
-            print(f"\nThe function '{str(ae)[-5:-1]}' hasn't been added to the dummy class")
-            print("or you're trying to reference a variable that doesn't exist")
-            print(f"Add the following lines to cozmo_taste_game/fake_robot.py:")
-            print(f"def {str(ae)[-5:-1]}(a*):")
-            print(f"\tprint('#Give helpful input here#')")
-            print(f"\treturn FakeAction()")
+    cozmo.run_program(cozmo_program, use_viewer=True, force_viewer_on_top=True)

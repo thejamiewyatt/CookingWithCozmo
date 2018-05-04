@@ -9,6 +9,9 @@ class FakeRobot(Robot):
     def set_start_position(self) -> None:
         print('Cozmo get setup in a starting position')
 
+    def add_event_handler(self, on_new_camera_image) -> None:
+        print('Adding on new camera image event handler to cozmo')
+
     def turn_in_place(self) -> None:
         print('Cozmo turns in place')
 
