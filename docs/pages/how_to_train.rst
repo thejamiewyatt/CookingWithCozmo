@@ -9,11 +9,16 @@ resources that may be helpful to read before continuing:
 	- `General information about retraining <https://www.tensorflow.org/tutorials/image_retraining/>`_
 	- `Information about retrain.py and its arguments <https://hackernoon.com/creating-insanely-fast-image-classifiers-with-mobilenet-in-tensorflow-f030ce0a2991/>`_
 	- `More information about retraining <https://codelabs.developers.google.com/codelabs/tensorflow-for-poets/>`_
-	
+
+It should also be noted that you should have similar training and real world operating. Ex: if you're training Cozmo
+and there's a white background, there should be a white background when the program is running. White is a really
+good color choice since it provides good contrast between the background and the images.
+
 Cozmo uses a retrained MobileNet neural network to classify images. Training the network has
 3 steps:
 
 1. Take images with Cozmo:
+---------------------------------
 
     To take pictures with cozmo, place him and his testing plate on their respective locations on the mat.
     Execute "take-pictures.py <food_name> <duration>" where duration is how long cozmo will take pictures.
@@ -34,6 +39,7 @@ Cozmo uses a retrained MobileNet neural network to classify images. Training the
 
   
 2. Run the training script:
+---------------------------------
 
     For this next step, you will be running a script that trains the neural network. The first step is to copy the folders
     in "pictures" to the "data" folder. Then, open a console that is in the image recognition folder
@@ -57,6 +63,7 @@ Cozmo uses a retrained MobileNet neural network to classify images. Training the
 
 
 3. Test (and possibly repeat all 3 steps):
+--------------------------------------------------
 
     The final step is to test your neural network. Connect your phone to cozmo and the computer, then position
     Cozmo, the plate, and a food item on the plate. Run the program "Cozmo-takepicture.py". This program will take a picture
@@ -79,6 +86,7 @@ Cozmo uses a retrained MobileNet neural network to classify images. Training the
 
 
 Neural Network Troubleshooting
+-----------------------------------
 
     Here are some tips to improve your neural networks accuracy:
 	

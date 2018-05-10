@@ -44,6 +44,7 @@ Documentation under About.
    :caption: Getting Started
 
    pages/setup
+   pages/basic_program_flow
 
 .. toctree::
    :maxdepth: 2
