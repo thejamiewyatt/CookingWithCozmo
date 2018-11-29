@@ -120,7 +120,7 @@ class CozmoRobot(Robot):
             self.speak("No")
             self.__play_animation(negative_reactions[num])
         elif num == 3:
-            self.speak("That's not what I want.")
+            self.speak("That's not what we need.")
             self.__play_animation(negative_reactions[num])
         else:
             self.__play_animation(negative_reactions[num])
@@ -133,7 +133,7 @@ class CozmoRobot(Robot):
         :return: None
         """
         #
-        self.speak("Congratulations, you filled up the plate!")
+        self.speak("Hooray, we made my favorite foods! Bye Bye!")
         self.cozmo.turn_in_place(degrees(deg)).wait_for_completed()
         # self.cozmo.drive_straight(distance_mm(distance), speed_mmps(speed)).wait_for_completed()
         self.cozmo.play_anim_trigger(Triggers.PopAWheelieInitial, ignore_body_track=True).wait_for_completed()

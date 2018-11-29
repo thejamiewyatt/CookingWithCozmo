@@ -18,11 +18,11 @@ class Plate(ABC):
         return out[:trim_index]
 
     @abstractmethod
-    def can_place_food(self, food: FoodProp) -> bool:
+    def can_place_food(self, food: FoodProp, recipe) -> bool:
         pass
 
     @abstractmethod
-    def add_food(self, food: FoodProp) -> None:
+    def add_food(self, food: FoodProp, recipe) -> None:
         pass
 
     @property

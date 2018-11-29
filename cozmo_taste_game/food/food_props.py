@@ -1,66 +1,16 @@
 from .food_prop import FoodProp
 from .food_group import FoodGroup
 
-
-class Hotdog(FoodProp):
+class Empty(FoodProp):
     def __init__(self):
         super().__init__()
 
     def __str__(self):
-        return 'hotdog'
+        return 'empty'
 
     @property
-    def food_groups(self):
-        return [FoodGroup.protein]
-
-    @property
-    def color(self):
-        return 'red'
-
-
-class Watermelon(FoodProp):
-    def __init__(self):
-        super().__init__()
-
-    def __str__(self):
-        return 'watermelon'
-
-    @property
-    def food_groups(self):
-        return [FoodGroup.fruit]
-
-    @property
-    def color(self):
-        return 'red'
-
-
-class Grapes(FoodProp):
-    def __init__(self):
-        super().__init__()
-
-    def __str__(self):
-        return 'grapes'
-
-    @property
-    def color(self):
-        return 'green'
-
-
-class Broccoli(FoodProp):
-    def __init__(self):
-        super().__init__()
-
-    def __str__(self):
-        return 'broccoli'
-
-    @property
-    def food_groups(self):
-        return [FoodGroup.vegetable]
-
-    @property
-    def color(self):
-        return 'green'
-
+    def name(self):
+        return 'empty'
 
 class Milk(FoodProp):
     def __init__(self):
@@ -70,44 +20,20 @@ class Milk(FoodProp):
         return 'milk'
 
     @property
-    def color(self):
-        return 'white'
+    def name(self):
+        return 'milk'
 
-
-class Banana(FoodProp):
+class Blueberries(FoodProp):
     def __init__(self):
         super().__init__()
 
     def __str__(self):
-        return 'banana'
+        return 'blueberries'
 
     @property
-    def color(self):
-        return 'yellow'
+    def name(self):
+        return 'blueberries'
 
-
-class Blueberry(FoodProp):
-    def __init__(self):
-        super().__init__()
-
-    def __str__(self):
-        return 'blueberry'
-
-    @property
-    def color(self):
-        return 'blue'
-
-
-class Cupcake(FoodProp):
-    def __init__(self):
-        super().__init__()
-
-    def __str__(self):
-        return 'cupcake'
-
-    @property
-    def color(self):
-        return 'pink'
 
 
 class Cheese(FoodProp):
@@ -118,45 +44,96 @@ class Cheese(FoodProp):
         return 'cheese'
 
     @property
-    def color(self):
-        return 'yellow'
+    def name(self):
+        return 'cheese'
 
-
-class Carrot(FoodProp):
+class Flour(FoodProp):
     def __init__(self):
         super().__init__()
 
     def __str__(self):
-        return 'carrot'
+        return 'flour'
 
     @property
-    def color(self):
-        return 'orange'
+    def name(self):
+        return 'flour'
 
-
-class Orange(FoodProp):
+class Chocolate(FoodProp):
     def __init__(self):
         super().__init__()
 
     def __str__(self):
-        return 'orange'
+        return 'chocolate'
 
     @property
-    def color(self):
-        return 'orange'
+    def name(self):
+        return 'chocolate'
 
-
-class Corn(FoodProp):
+class Strawberry(FoodProp):
     def __init__(self):
         super().__init__()
 
     def __str__(self):
-        return 'corn'
+        return 'strawberry'
 
     @property
-    def color(self):
-        return 'yellow'
+    def name(self):
+        return 'strawberry'
 
+class Pepper(FoodProp):
+    def __init__(self):
+        super().__init__()
+
+    def __str__(self):
+        return 'pepper'
+
+    @property
+    def name(self):
+        return 'pepper'
+
+class Tomato(FoodProp):
+    def __init__(self):
+        super().__init__()
+
+    def __str__(self):
+        return 'tomato'
+
+    @property
+    def name(self):
+        return 'tomato'
+
+class Crust(FoodProp):
+    def __init__(self):
+        super().__init__()
+
+    def __str__(self):
+        return 'crust'
+
+    @property
+    def name(self):
+        return 'crust'
+
+class Egg(FoodProp):
+    def __init__(self):
+        super().__init__()
+
+    def __str__(self):
+        return 'egg'
+
+    @property
+    def name(self):
+        return 'egg'
+
+class Apple(FoodProp):
+    def __init__(self):
+        super().__init__()
+
+    def __str__(self):
+        return 'apple'
+
+    @property
+    def name(self):
+        return 'apple'
 
 def get_food(food_type: str):
     """
@@ -168,16 +145,18 @@ def get_food(food_type: str):
     """
     food_type = food_type.lower()
     return {
-        "hotdog": Hotdog(),
-        "watermelon": Watermelon(),
-        "broccoli": Broccoli(),
-        "grapes": Grapes(),
-        "blueberry": Blueberry(),
-        "cupcake": Cupcake(),
-        "banana": Banana(),
-        "carrot": Carrot(),
+        
+        "blueberries": Blueberries(),
+        "apple" : Apple(),
+        "egg" : Egg(),
+        "chocolate" : Chocolate(),
+        "crust" : Crust(),
+        "strawberry" : Strawberry(),
+        "tomato" : Tomato(),
+        "flour" : Flour(),
+        "pepper" : Pepper(),
         "cheese": Cheese(),
         "milk": Milk(),
-        "orange": Orange(),
-        "corn": Corn()
+        "empty": Empty()
+       
     }[food_type]

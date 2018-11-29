@@ -16,5 +16,5 @@ class FoodProp(ABC):
 
     @property
     @abstractmethod
-    def color(self):
+    def name(self):
         pass

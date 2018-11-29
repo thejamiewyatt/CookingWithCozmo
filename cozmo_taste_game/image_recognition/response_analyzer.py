@@ -102,6 +102,8 @@ class ResponseAnalyzer:
 
         self.has_been_checked = True
         if self.identified_food is not None:
+            #print("boy")
             return True
         else:
+            #print("girl")
             return False
